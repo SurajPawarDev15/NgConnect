@@ -8,11 +8,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { Login } from './pages/login/login';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CreateAccount } from './pages/create-account/create-account';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
-  declarations: [App, Topbar, Login],
-  imports: [BrowserModule, AppRoutingModule, MatButtonModule, MatFormFieldModule, MatInputModule],
-  providers: [provideBrowserGlobalErrorListeners()],
+  declarations: [App, Topbar, Login, CreateAccount],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
+  providers: [provideBrowserGlobalErrorListeners(), HttpClient],
   bootstrap: [App],
 })
 export class AppModule {}

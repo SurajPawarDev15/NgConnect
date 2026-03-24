@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="form-container">
+    <div class="title">Create an Account</div>
+
+    <form [formGroup]="createAccountForm" (ngSubmit)="onCreateAccount()">
+
+      <!-- Email -->
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+
+        <mat-error
+          *ngIf="createAccountForm.get('email')?.touched && createAccountForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+
+        <mat-error
+          *ngIf="createAccountForm.get('email')?.touched && createAccountForm.get('email')?.hasError('email')">
+          Please enter a valid email
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Username -->
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+
+        <mat-error
+          *ngIf="createAccountForm.get('username')?.touched && createAccountForm.get('username')?.hasError('required')">
+          Username is required
+        </mat-error>
+
+        <!-- <mat-error
+          *ngIf="createAccountForm.get('username')?.touched && createAccountForm.get('username')?.hasError('maxlength')">
+          Max 10 characters allowed
+        </mat-error> -->
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+
+        <mat-error
+          *ngIf="createAccountForm.get('password')?.touched && createAccountForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+
+        <!-- <mat-error
+          *ngIf="createAccountForm.get('password')?.touched && createAccountForm.get('password')?.hasError('minlength')">
+          Password must be at least 6 characters
+        </mat-error> -->
+      </mat-form-field>
+
+      <div class="button-container">
+        <button
+          mat-raised-button
+          color="primary"
+          class="login-button"
+          type="submit"
+          [disabled]="createAccountForm.invalid">
+          Create Account
+        </button>
+
+        <span>OR</span>
+
+        <button routerLink="/login" mat-button type="button">
+          Login
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
