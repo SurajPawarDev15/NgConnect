@@ -26,12 +26,25 @@ export class CreateAccount {
     });
   }
 
+  // onCreateAccount() {
+  //   this.userService
+  //     .createNewUser(this.createAccountForm.value)
+  //     .then((res) => {
+  //       console.log(res);
+  //       this.userService.user = res;
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
   onCreateAccount() {
     this.userService
       .createNewUser(this.createAccountForm.value)
       .then((res) => {
         console.log(res);
         this.userService.user = res;
+        localStorage.setItem('user', JSON.stringify(res));
+        this.router.navigate(['/posts']);
       })
       .catch((err) => {
         console.log(err);

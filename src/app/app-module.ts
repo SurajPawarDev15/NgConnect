@@ -11,9 +11,21 @@ import { MatInputModule } from '@angular/material/input';
 import { CreateAccount } from './pages/create-account/create-account';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { Posts } from './pages/posts/posts';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+// import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
-  declarations: [App, Topbar, Login, CreateAccount],
+  declarations: [App, Topbar, Login, CreateAccount, Posts],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,8 +34,16 @@ import { HttpClient } from '@angular/common/http';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSnackBarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatCardModule,
+    MaterialFileInputModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
   ],
+
   providers: [provideBrowserGlobalErrorListeners(), HttpClient],
-  bootstrap: [App],
+  // bootstrap: [App],
 })
 export class AppModule {}
